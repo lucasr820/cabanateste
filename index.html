@@ -490,7 +490,6 @@
     .cal-header { text-align: center; margin-bottom: 44px; }
     .cal-header .section-desc { max-width: 500px; margin: 0 auto; }
 
-    /* Cabin selector tabs */
     .cabin-tabs {
       display: flex; gap: 0; justify-content: center;
       margin-bottom: 48px; position: relative;
@@ -525,7 +524,6 @@
     .cabin-tab:not(.active):hover {
       background: var(--beige); border-color: var(--green-light);
     }
-    /* Color accent strip at bottom of active tab */
     .cabin-tab.active[data-cabin="raizes"]::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
       background: var(--gold); border-radius: 0 0 0 var(--radius);
@@ -539,11 +537,9 @@
       .cabin-tab { border-radius: var(--radius) !important; border: 1.5px solid var(--sand) !important; width: 100%; max-width: 320px; }
     }
 
-    /* Calendar panel — hidden/shown */
     .cal-panel { display: none; }
     .cal-panel.active { display: block; }
 
-    /* Cabin badge inside calendar */
     .cal-cabin-badge {
       display: inline-flex; align-items: center; gap: 10px;
       padding: 9px 20px; border-radius: 50px;
@@ -559,7 +555,6 @@
       color: var(--green-mid);
     }
 
-    /* Source badge */
     .cal-source-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(74,124,89,.08); border: 1px solid rgba(74,124,89,.2);
@@ -568,7 +563,6 @@
     }
     .cal-source-badge span { opacity: .65; font-weight: 300; }
 
-    /* Legend */
     .cal-legend {
       display: flex; gap: 22px; flex-wrap: wrap; margin-bottom: 32px;
     }
@@ -578,7 +572,6 @@
     .leg-unavailable { background: #c9c9c9; }
     .leg-hot         { background: var(--gold); }
 
-    /* Month nav */
     .cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
     .cal-nav-btn {
       background: var(--green-deep); color: var(--white);
@@ -595,7 +588,6 @@
     }
     .cal-month-label span { font-style: italic; color: var(--green-light); }
 
-    /* Weekdays + grid */
     .cal-weekdays { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; margin-bottom: 8px; }
     .cal-weekday { text-align: center; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-light); font-weight: 500; padding: 6px 0; }
     .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 8px; }
@@ -623,18 +615,15 @@
     .cal-day.hot:hover { background: var(--gold); color: var(--green-deep); transform: scale(1.11); box-shadow: 0 6px 22px rgba(200,169,110,.5); z-index: 2; }
     .cal-day.today-mark { box-shadow: 0 0 0 2.5px var(--gold); }
 
-    /* Loading / error */
     .cal-loading { grid-column: span 7; text-align: center; padding: 44px 0; color: var(--text-light); font-size: .88rem; display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .cal-spinner { width: 30px; height: 30px; border-radius: 50%; border: 3px solid var(--sand); border-top-color: var(--green-light); animation: spin .8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Info box */
     .cal-info { margin-top: 28px; padding: 20px 24px; background: var(--green-deep); border-radius: var(--radius); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .cal-info-icon { font-size: 1.6rem; flex-shrink: 0; }
     .cal-info-text strong { display: block; color: var(--white); font-size: .92rem; margin-bottom: 3px; }
     .cal-info-text p { color: rgba(255,255,255,.55); font-size: .82rem; line-height: 1.5; font-weight: 300; }
 
-    /* Toast */
     .cal-toast {
       position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%) translateY(16px);
       background: var(--green-deep); color: var(--white);
@@ -770,7 +759,6 @@
         <div class="dif-title">Silêncio & Paz</div>
         <div class="dif-desc">Longe do barulho urbano. Aqui o som é só da natureza — pássaros, brisa e tranquilidade total.</div>
       </div>
-      
       <div class="dif-card reveal reveal-delay-4">
         <div class="dif-icon">🏡</div>
         <div class="dif-title">Conforto & Limpeza</div>
@@ -931,14 +919,12 @@
 <section id="calendario">
   <div class="cal-wrap">
 
-    <!-- Header -->
     <div class="cal-header reveal">
       <span class="section-tag">Disponibilidade</span>
       <h2 class="section-title">Verifique a<br><em>disponibilidade</em></h2>
       <p class="section-desc">Selecione a cabana desejada, escolha uma data disponível e reserve agora pelo WhatsApp</p>
     </div>
 
-    <!-- Cabin selector tabs -->
     <div class="cabin-tabs reveal reveal-delay-1">
       <div class="cabin-tab active" data-cabin="raizes" onclick="switchCabin('raizes')">
         <div class="tab-icon">🪵</div>
@@ -1107,32 +1093,20 @@
     const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
                     'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
-    // ┌──────────────────────────────────────────────────────────────────────┐
-    // │  CONFIGURAÇÃO — substitua pelas URLs das planilhas publicadas        │
-    // │  Cada cabana tem sua própria aba (ou planilha) no Google Sheets      │
-    // │  Consulte GUIA-CONFIGURACAO.md para o passo a passo                  │
-    // └──────────────────────────────────────────────────────────────────────┘
     const CABINS = {
       raizes: {
-        name:     'Cabana Raízes',
+        name:      'Cabana Raízes',
         sheetsUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTDzJ1liKtRHtthJwohAGgO7Y7iamsYrLtKBA0A-qrhAo2han_04Wso18RyfqVrQIk-6OrtptJkZLNR/pub?gid=0&single=true&output=csv',
-        // Exemplo: 'https://docs.google.com/spreadsheets/d/SEU_ID/pub?gid=0&single=true&output=csv'
-        fallback: [],
-        // Dados locais de exemplo — remova após configurar o Sheets:
-        // fallback: [
-        //   { date: '2026-04-05', status: 'indisponivel' },
-        //   { date: '2026-04-06', status: 'hot' },
-        // ],
+        fallback:  [],
       },
       pilar: {
-        name:     'Cabana Pilar',
+        name:      'Cabana Pilar',
         sheetsUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ8RG4EaT7gxcYp_zBjYi2y3WYs5_soFMZc1VIP-WiCsqTnCGSc5zMEmWHVUIJC4JxYAvbafpTDZTs/pub?output=csv',
-        // Exemplo: 'https://docs.google.com/spreadsheets/d/SEU_ID/pub?gid=123456&single=true&output=csv'
-        fallback: [],
+        fallback:  [],
       },
     };
 
-    // ── Shared state ────────────────────────────────────────────────────────
+    // ── Shared state ──────────────────────────────────────────────────────
     const today     = new Date();
     const thisYear  = today.getFullYear();
     const thisMonth = today.getMonth();
@@ -1142,7 +1116,7 @@
       pilar:  { year: thisYear, month: thisMonth, dateMap: {} },
     };
 
-    // ── Helpers ─────────────────────────────────────────────────────────────
+    // ── Helpers ───────────────────────────────────────────────────────────
     function fmt(y, m, d) {
       const dt = new Date(y, m, d);
       return dt.getFullYear() + '-' +
@@ -1159,26 +1133,54 @@
         if (cols.length < 2) continue;
         const [date, rawStatus] = cols;
         if (!date.match(/^\d{4}-\d{2}-\d{2}$/)) continue;
-        const s = rawStatus.toLowerCase()
-          .replace('disponivel','available').replace('disponível','available')
-          .replace('indisponivel','unavailable').replace('indisponível','unavailable');
-        map[date] = s; // 'available' | 'unavailable' | 'hot'
+        const s = rawStatus.toLowerCase().trim();
+        let status;
+        if (s === 'hot') {
+          status = 'hot';
+        } else if (s.includes('indispon')) {
+          status = 'unavailable';
+        } else {
+          status = 'available';
+        }
+        map[date] = status;
       }
       return map;
     }
 
-    // ── Fetch + render for one cabin ────────────────────────────────────────
+    // ── CORS-resilient fetch ──────────────────────────────────────────────
+    // Tentativa 1: fetch direto (funciona com planilhas Google publicadas).
+    // Tentativa 2: proxy allorigins.win (fallback automático para S3/CloudFront
+    //              ou qualquer ambiente onde o fetch direto seja bloqueado).
+    async function fetchCSV(url) {
+      try {
+        const res = await fetch(url, { mode: 'cors', cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return await res.text();
+      } catch (e) {
+        console.warn('[Sheets] Fetch direto falhou, tentando proxy...', e.message);
+      }
+      try {
+        const proxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+        const res   = await fetch(proxy, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Proxy HTTP ' + res.status);
+        return await res.text();
+      } catch (e) {
+        console.warn('[Sheets] Proxy também falhou:', e.message);
+        throw e;
+      }
+    }
+
+    // ── Fetch + render para uma cabana ────────────────────────────────────
     async function loadCabin(id) {
       const cfg = CABINS[id];
       const st  = state[id];
       showLoading(id);
 
       if (!cfg.sheetsUrl || cfg.sheetsUrl.startsWith('SUA_URL')) {
-        // No Sheets configured — use fallback
         st.dateMap = {};
         (cfg.fallback || []).forEach(({ date, status }) => {
           st.dateMap[date] = status === 'hot' ? 'hot'
-                           : status === 'indisponivel' || status === 'unavailable' ? 'unavailable'
+                           : (status === 'indisponivel' || status === 'unavailable') ? 'unavailable'
                            : 'available';
         });
         setUpdatedLabel(id, '· dados locais');
@@ -1187,15 +1189,13 @@
       }
 
       try {
-        const res  = await fetch(cfg.sheetsUrl, { cache: 'no-store' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const text = await res.text();
+        const text = await fetchCSV(cfg.sheetsUrl);
         st.dateMap = parseCSV(text);
         const now  = new Date();
         setUpdatedLabel(id, '· atualizado às ' + now.getHours() + ':' + String(now.getMinutes()).padStart(2,'0'));
         renderCalendar(id);
       } catch (err) {
-        console.warn('[Cabana ' + id + '] Sheets error:', err);
+        console.warn('[Cabana ' + id + '] Todas as tentativas falharam:', err);
         st.dateMap = {};
         (cfg.fallback || []).forEach(({ date, status }) => { st.dateMap[date] = status; });
         setUpdatedLabel(id, '· usando dados locais');
@@ -1211,11 +1211,11 @@
     function showLoading(id) {
       const grid = document.getElementById('grid-' + id);
       const lbl  = document.getElementById('label-' + id);
-      if (lbl) lbl.innerHTML = MONTHS[state[id].month] + ' <span>' + state[id].year + '</span>';
+      if (lbl)  lbl.innerHTML = MONTHS[state[id].month] + ' <span>' + state[id].year + '</span>';
       if (grid) grid.innerHTML = '<div class="cal-loading"><div class="cal-spinner"></div><span>Carregando datas...</span></div>';
     }
 
-    // ── Render calendar grid ─────────────────────────────────────────────────
+    // ── Render do grid ────────────────────────────────────────────────────
     function renderCalendar(id) {
       const st   = state[id];
       const grid = document.getElementById('grid-' + id);
@@ -1224,10 +1224,10 @@
       const next = document.getElementById('next-' + id);
       if (!grid) return;
 
-      lbl.innerHTML = MONTHS[st.month] + ' <span>' + st.year + '</span>';
-      prev.disabled = (st.year === thisYear && st.month <= thisMonth);
-
+      lbl.innerHTML  = MONTHS[st.month] + ' <span>' + st.year + '</span>';
+      prev.disabled  = (st.year === thisYear && st.month <= thisMonth);
       grid.innerHTML = '';
+
       const firstDay    = new Date(st.year, st.month, 1).getDay();
       const daysInMonth = new Date(st.year, st.month + 1, 0).getDate();
       const tStr        = todayStr();
@@ -1244,8 +1244,8 @@
         cell.className = 'cal-day';
         cell.innerHTML = '<span class="day-num">' + d + '</span>';
 
-        const isPast  = dateStr < tStr;
-        const status  = st.dateMap[dateStr];
+        const isPast = dateStr < tStr;
+        const status = st.dateMap[dateStr];
 
         if (isPast) {
           cell.classList.add('past');
@@ -1257,7 +1257,6 @@
           cell.title = '🔥 Data muito procurada! Reserve logo';
           cell.addEventListener('click', () => openWhatsApp(dateStr, id));
         } else {
-          // 'available' or unlisted = available
           cell.classList.add('available');
           cell.title = 'Clique para reservar esta data';
           cell.addEventListener('click', () => openWhatsApp(dateStr, id));
@@ -1268,23 +1267,23 @@
       }
     }
 
-    // ── WhatsApp redirect ────────────────────────────────────────────────────
+    // ── Redirect WhatsApp ─────────────────────────────────────────────────
     function openWhatsApp(dateStr, cabinId) {
-      const [y, m, d]  = dateStr.split('-');
-      const formatted  = parseInt(d) + ' de ' + MONTHS[parseInt(m)-1] + ' de ' + y;
-      const cabinName  = CABINS[cabinId].name;
-      const msg        = encodeURIComponent(
+      const [y, m, d] = dateStr.split('-');
+      const formatted = parseInt(d) + ' de ' + MONTHS[parseInt(m)-1] + ' de ' + y;
+      const cabinName = CABINS[cabinId].name;
+      const msg       = encodeURIComponent(
         'Olá! Gostaria de reservar a ' + cabinName + ' para a data: ' + formatted + ' 🌿'
       );
-      const toast    = document.getElementById('calToast');
-      const toastDt  = document.getElementById('toastDate');
+      const toast   = document.getElementById('calToast');
+      const toastDt = document.getElementById('toastDate');
       toastDt.textContent = cabinName + ' · ' + formatted;
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3500);
       setTimeout(() => window.open('https://wa.me/' + PHONE + '?text=' + msg, '_blank'), 520);
     }
 
-    // ── Navigation wiring ────────────────────────────────────────────────────
+    // ── Navegação ─────────────────────────────────────────────────────────
     ['raizes', 'pilar'].forEach(id => {
       document.getElementById('prev-' + id).addEventListener('click', () => {
         const st = state[id];
@@ -1298,11 +1297,11 @@
       });
     });
 
-    // ── Init: load both cabins in parallel ───────────────────────────────────
+    // ── Init ──────────────────────────────────────────────────────────────
     loadCabin('raizes');
     loadCabin('pilar');
 
-    // Auto-refresh every 5 minutes
+    // Auto-refresh a cada 1 minuto (igual ao seu original)
     setInterval(() => { loadCabin('raizes'); loadCabin('pilar'); }, 1 * 60 * 1000);
   })();
 </script>
