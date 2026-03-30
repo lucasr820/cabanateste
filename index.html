@@ -6,6 +6,7 @@
   <title>Cabana do Park – Refúgio Perfeito em Campo Grande, MS</title>
   <meta name="description" content="Aluguel de cabanas em Campo Grande - MS. Ambiente aconchegante, banheira aquecida, privacidade e romance. Reserve agora pelo WhatsApp." />
   <meta name="keywords" content="aluguel de cabana, cabana romantica, campo grande ms, refúgio, banheira aquecida, hospedagem campo grande" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a2e1a'/%3E%3Cpolygon points='32,8 56,28 8,28' fill='%23c8a96e'/%3E%3Crect x='14' y='28' width='36' height='24' fill='%234a7c59'/%3E%3Crect x='26' y='36' width='12' height='16' fill='%231a2e1a'/%3E%3Crect x='17' y='31' width='8' height='8' fill='%23e8d5aa'/%3E%3Crect x='39' y='31' width='8' height='8' fill='%23e8d5aa'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
@@ -304,6 +305,7 @@
       background: linear-gradient(160deg, rgba(26,46,26,.55), transparent);
       opacity: 0; transition: opacity .4s;
       display: flex; align-items: flex-end; padding: 20px;
+      pointer-events: none;
     }
     .g-overlay span {
       color: var(--white); font-size: .78rem;
@@ -794,8 +796,8 @@
         <div class="g-overlay"><span>Interior aconchegante</span></div>
       </div>
       <div class="g-item reveal reveal-delay-1">
-        <img src="assets/images/fogueirapilar.webp" alt="Fogueira" />
-        <div class="g-overlay"><span>Fogueira para a família</span></div>
+        <img src="assets/images/pilarbanheira.webp" alt="Banheira" />
+        <div class="g-overlay"><span>Banheira quentinha</span></div>
       </div>
       <div class="g-item reveal reveal-delay-2">
         <img src="assets/images/cozinhapilar.webp" alt="Cozinha da Pilar" />
@@ -912,7 +914,7 @@
         <div class="loc-detail-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></div>
         <div class="loc-detail-text">
           <strong>Instagram</strong>
-          <span>@cabanadopark</span>
+          <a href="https://instagram.com/cabanadopark" target="_blank" style="color:inherit;text-decoration:none;">@cabanadopark</a>
         </div>
       </div>
       <a href="https://wa.me/5567999826656?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20na%20Cabana%20do%20Park." target="_blank" class="btn-primary" style="margin-top:28px;">
@@ -1054,7 +1056,7 @@
     <div class="footer-col">
       <h4>Contato</h4>
       <a href="https://wa.me/5567999826656" target="_blank">(67) 99982-6656</a>
-      <a href="https://instagram.com" target="_blank">@cabanadopark</a>
+      <a href="https://instagram.com/cabanadopark" target="_blank">@cabanadopark</a>
       <a href="#localizacao">Chácara dos Poderes, Campo Grande – MS</a>
     </div>
   </div>
@@ -1312,6 +1314,96 @@
     // Auto-refresh a cada 1 minuto (igual ao seu original)
     setInterval(() => { loadCabin('raizes'); loadCabin('pilar'); }, 1 * 60 * 1000);
   })();
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,.88); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center;
+">
+  <button id="lb-prev" aria-label="Anterior" style="
+    position:absolute; left:18px; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,.12); border:none; color:#fff;
+    font-size:2rem; width:48px; height:48px; border-radius:50%;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:.2s;
+  ">&#8249;</button>
+  <img id="lb-img" src="" alt="" style="
+    max-width:90vw; max-height:88vh;
+    border-radius:12px; box-shadow:0 8px 60px rgba(0,0,0,.6);
+    object-fit:contain; user-select:none;
+    transition:opacity .25s;
+  " />
+  <button id="lb-next" aria-label="Próxima" style="
+    position:absolute; right:18px; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,.12); border:none; color:#fff;
+    font-size:2rem; width:48px; height:48px; border-radius:50%;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:.2s;
+  ">&#8250;</button>
+  <button id="lb-close" aria-label="Fechar" style="
+    position:absolute; top:16px; right:16px;
+    background:rgba(255,255,255,.12); border:none; color:#fff;
+    font-size:1.4rem; width:40px; height:40px; border-radius:50%;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:.2s;
+  ">&#x2715;</button>
+</div>
+
+<script>
+(function () {
+  const imgs = Array.from(document.querySelectorAll('.g-item img, .sobre-img img'));
+  let current = 0;
+
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lb-img');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+  const lbClose= document.getElementById('lb-close');
+
+  function show(i) {
+    current = (i + imgs.length) % imgs.length;
+    lbImg.style.opacity = '0';
+    lbImg.src = imgs[current].src;
+    lbImg.alt = imgs[current].alt;
+    lbImg.onload = () => { lbImg.style.opacity = '1'; };
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    lbPrev.style.display = imgs.length > 1 ? 'flex' : 'none';
+    lbNext.style.display = imgs.length > 1 ? 'flex' : 'none';
+  }
+
+  function close() {
+    lb.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  imgs.forEach((img, i) => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => show(i));
+  });
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => show(current - 1));
+  lbNext.addEventListener('click', () => show(current + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+
+  document.addEventListener('keydown', e => {
+    if (lb.style.display !== 'flex') return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+
+  // Suporte a swipe (touch)
+  let tx = 0;
+  lb.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+  });
+})();
 </script>
 </body>
 </html>
