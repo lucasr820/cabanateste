@@ -6,7 +6,36 @@
   <title>Cabana do Park – Refúgio Perfeito em Campo Grande, MS</title>
   <meta name="description" content="Aluguel de cabanas em Campo Grande - MS. Ambiente aconchegante, banheira aquecida, privacidade e romance. Reserve agora pelo WhatsApp." />
   <meta name="keywords" content="aluguel de cabana, cabana romantica, campo grande ms, refúgio, banheira aquecida, hospedagem campo grande" />
+  <link rel="canonical" href="https://www.cabanadopark.com.br/" />
+
+  <!-- Open Graph / WhatsApp / Instagram -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.cabanadopark.com.br/" />
+  <meta property="og:site_name"   content="Cabana do Park" />
+  <meta property="og:locale"      content="pt_BR" />
+  <meta property="og:title"       content="Cabana do Park – Refúgio Perfeito em Campo Grande, MS" />
+  <meta property="og:description" content="Aluguel de cabanas em Campo Grande - MS. Ambiente aconchegante, banheira aquecida, privacidade e romance. Reserve agora pelo WhatsApp." />
+  <meta property="og:image"       content="https://www.cabanadopark.com.br/assets/images/pilarfrente.webp" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"   content="Fachada da Cabana do Park em Campo Grande, MS" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Cabana do Park – Refúgio Perfeito em Campo Grande, MS" />
+  <meta name="twitter:description" content="Aluguel de cabanas em Campo Grande - MS. Ambiente aconchegante, banheira aquecida, privacidade e romance. Reserve agora pelo WhatsApp." />
+  <meta name="twitter:image"       content="https://www.cabanadopark.com.br/assets/images/pilarfrente.webp" />
+
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a2e1a'/%3E%3Cpolygon points='32,8 56,28 8,28' fill='%23c8a96e'/%3E%3Crect x='14' y='28' width='36' height='24' fill='%234a7c59'/%3E%3Crect x='26' y='36' width='12' height='16' fill='%231a2e1a'/%3E%3Crect x='17' y='31' width='8' height='8' fill='%23e8d5aa'/%3E%3Crect x='39' y='31' width='8' height='8' fill='%23e8d5aa'/%3E%3C/svg%3E" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5Z61H8LEB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Z5Z61H8LEB');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
@@ -1069,6 +1098,11 @@
 </a>
 
 <script>
+  const PHONE = '5567999826656';
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+    a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + PHONE);
+  });
+
   // Navbar scroll
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1082,14 +1116,18 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Hamburger (mobile)
+  const navLinks = document.querySelector('.nav-links');
+  function closeMenu() {
+    navLinks.style.display = 'none';
+  }
   document.getElementById('hamburger').addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    if (links.style.display === 'flex') {
-      links.style.display = 'none';
+    if (navLinks.style.display === 'flex') {
+      closeMenu();
     } else {
-      links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;right:0;left:0;background:rgba(26,46,26,.97);backdrop-filter:blur(14px);padding:28px 5%;gap:20px;z-index:99;';
+      navLinks.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;right:0;left:0;background:rgba(26,46,26,.97);backdrop-filter:blur(14px);padding:28px 5%;gap:20px;z-index:99;';
     }
   });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
   /* ─── CABIN TABS ─── */
   function switchCabin(id) {
@@ -1099,7 +1137,6 @@
 
   /* ─── CALENDAR ENGINE — Dual Cabin + Google Sheets ─── */
   (function() {
-    const PHONE  = '5567999826656';
     const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
                     'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
